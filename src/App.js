@@ -80,11 +80,11 @@ displayFaceBox = (box) => {
 
 onButtonSubmit = () => {
   this.setState({imageUrl: this.state.input});
-  fetch('https://aqueous-reef-14788.herokuapp.com/', {
+  fetch('https://aqueous-reef-14788.herokuapp.com/imageurl', {
         method: 'post',
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify({
-          input: this.state.input
+        input: this.state.input
      })
   })
   .then(response => response.json())
@@ -101,7 +101,7 @@ onButtonSubmit = () => {
       .then(count => {
         this.setState(Object.assign(this.state.user, {entries: count}))
       })
-      .catch(console.log(response))
+      .catch(console.log())
     }
     this.displayFaceBox(this.calculateFaceLocation(response))
   })
